@@ -3,7 +3,6 @@
 (setq load-path (cons "/Users/sasakiumi/.emacs.d/site-lisp/" load-path))
 (setq load-path (cons "/Users/sasakiumi/.emacs.d/auto-install/" load-path))
 
-
 ;; In order to use Ricty font
 (set-face-attribute 'default nil :family "Ricty" :height 130)
 (set-fontset-font "fontset-default" 'japanese-jisx0208 '("Ricty" . "iso10646-*"))
@@ -37,7 +36,7 @@
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;; Show recent used files with command \C-xr 
-(setq recentf-max-saved-items 500)
+(setq recentf-max-saved-items 50)
 (setq recentf-exclude '("/TAGS$" "/var/tmp/"))
 (require 'recentf-ext)
 (global-set-key "\C-xr" 'recentf-open-files)
@@ -84,7 +83,7 @@
 ;; フォント設定
 (if (eq window-system 'mac) (require 'carbon-font))
 (if window-system (fixed-width-set-fontset "hirakaku_w3" 12))
-(if window-system (setq fixed-width-rescale nil))
+(if window-system (setq fixed-widthx-rescale nil))
 
 ;; タブキー
 (setq default-tab-width 4)
@@ -254,3 +253,19 @@
 
 
 (global-auto-revert-mode 1)
+
+;; Unused buffers are removed automatically
+(require 'tempbuf)
+;; Trigered opening new file
+(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+;;
+(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+
+
+;; Auto insert template
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")
+(define-auto-insert "\\.c$" "c-template.c")
+(define-auto-insert "\\.py$" "python-template.py")
+
+
