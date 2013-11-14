@@ -1,24 +1,25 @@
-startup_message off
+termcapinfo xterm-256color 'is=^[r^[m^[2J^[H^[?7h^[?1;4;6l'
+termcapinfo xterm-256color 'Co#256:pa#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
+defbce "on"
 
-# encode
-defutf8 on
-defkanji utf-8
-encoding utf-8 utf-8
-defencofing utf-8
-
-# escape
-escape ^t^t
-
-term screen-256color
-
-# The scroll buffer
-defscrollback 8195
+defscrollback 5000
 markkeys h=^B:l=^F:$=^E:^U=^Z:^D=^V
- 
-# Messages
+
 msgwait 3
 msgminwait 2
- 
-hardstatus string "%?%h%:%t (screen #%n on %H)%?"
-caption always "%{=r dd}%-Lw%40L>%?%F%{=b dR}%:[%? %n%f %t %?%F%{-}%:]%?%+Lw %?%F%-024=GNU Screen of Git master%:%=%?"
-sorendition "+rb .G"
+
+autodetach on
+startup_message off
+bell_msg "^G"
+defutf8 on
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+escape ^t^t
+startup_message off
+vbell off
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+caption always "%{= Kk} %?%F%{b kK}%? %?%h%:%t (#%n)%? %{-}"
+hardstatus alwayslastline "%{= Gk} %-Lw%40L>%{b kg} %n %t %{-}%+Lw%-025=%{b kb} %Y/%m/%d %{=b km}%C:%s %A "
+sorendition "= Kk"
+shelltitle '$ |shell'
