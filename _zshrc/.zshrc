@@ -29,12 +29,15 @@ typeset -U path
 
 # vim: set ft=zsh :
 export PATH="$HOME/anaconda/bin:$HOME/.rbenv/bin:$PATH"
-export JAVA_HOME=/Library/Java/Home
+#export JAVA_HOME=/Library/Java/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home 
 export PATH=$JAVA_HOME/bin:$PATH
 export SCALA_HOME=/usr/local/share/scala-2.10.2
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:$HOME/bin/
 eval "$(rbenv init -)"
+
+/usr/local/bin/emacs --daemon
 
 ### Complement ###
 autoload -U compinit; compinit # 補完機能を有効にする
@@ -46,3 +49,6 @@ bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する(
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
 
 [[ -s /Users/sasakiumi/.nvm/nvm.sh ]] && . /Users/sasakiumi/.nvm/nvm.sh # This loads NVM
+
+
+alias emacs="emacsclient -nw"
