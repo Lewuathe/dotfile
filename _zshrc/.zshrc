@@ -52,3 +52,4 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小�
 
 
 alias emacs="emacsclient -nw"
+alias work="cd ~/Dropbox/MyWorks"
