@@ -8,6 +8,9 @@
 ;;(set-face-attribute 'default nil :family "Ricty" :height 130)
 ;;(set-fontset-font "fontset-default" 'japanese-jisx0208 '("Ricty" . "iso10646-*"))
 
+;; insted of using yes, I want to use "y"
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;;zencoding
 (require 'zencoding-mode)
 (add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
@@ -300,8 +303,20 @@
 (add-hook 'scala-mode-hook 'jaspace-mode)
 
 ;; ensime
+(add-to-list 'load-path "/Users/sasakiumi/.emacs.d/ensime/elisp/")
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;; Use both auto-complete and ensime
+(defun my-ac-scala-mode ()
+  (add-to-list 'ac-sources 'ac-source-dictionary)
+  (add-to-list 'ac-sources 'ac-source-yasnippet)
+  (add-to-list 'ac-sources 'ac-source-words-in-buffer)
+  (add-to-list 'ac-sources 'ac-source-words-in-same-mode-buffers)
+  (setq ac-sources (reverse ac-sources)) 
+  )
+
+(add-hook 'ensime-mode-hook 'my-ac-scala-mode)
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
