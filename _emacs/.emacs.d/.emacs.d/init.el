@@ -4,6 +4,11 @@
 (setq load-path (cons "/Users/sasakiumi/.emacs.d/site-lisp/slime/" load-path))
 (setq load-path (cons "/Users/sasakiumi/.emacs.d/auto-install/" load-path))
 
+;;設定ファイルはinits以下に置いていて、init-loaderによって読み込まれる
+(require 'init-loader)
+(init-loader-load "~/.emacs.d/inits")
+;;(init-loader-load "~/Dropbox/config-file/.emacs.d/inits")
+
 ;; In order to use Ricty font
 ;;(set-face-attribute 'default nil :family "Ricty" :height 130)
 ;;(set-fontset-font "fontset-default" 'japanese-jisx0208 '("Ricty" . "iso10646-*"))
