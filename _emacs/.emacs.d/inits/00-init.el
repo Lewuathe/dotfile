@@ -21,7 +21,7 @@
 (setq iswitchb-prompt-newbuffer nil)
 
 ;;Editting directory names
-(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+;;(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;; Show recent used files with command \C-xr 
 (setq recentf-max-saved-items 50)
@@ -41,7 +41,7 @@
 ))
 
 ;; Transparent Window
-(add-to-list 'default-frame-alist '(alpha . (0.80 0.100)))
+(add-to-list 'default-frame-alist '(alpha . (0.80 0.80)))
 
 ;; show file name
 (setq frame-title-format (format "%%f - Emacs@%s" (system-name)))
@@ -112,3 +112,9 @@
 
 ;; current path files
 (ffap-bindings)
+
+(require 'highlight-symbol)
+(setq highlight-symbol-colors '("DarkOrange" "DodgerBlue1" "DeepPink1"))
+;; 適宜keybindの設定
+(global-set-key (kbd "C-r") 'highlight-symbol-at-point)
+(global-set-key (kbd "C-M-r") 'highlight-symbol-remove-all)
